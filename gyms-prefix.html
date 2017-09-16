@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Sedona Pokémon Go Gyms</title>
+    <style>
+      h1 {font-family: Arial; font-size: 1.2rem;}
+      body {  font-family: Arial; font-size: 1rem; }
+
+		@media (max-width: 480px) {
+			html, select {
+				font-size: 40px;
+			}
+		}
+
+		@media (min-width: 480px) {
+			html, select {
+				font-size: 40px;
+			}
+		}
+
+		@media (min-width: 768px) {
+			html, select {
+				font-size: 40px;
+			}
+		}
+
+		@media (min-width: 992px) {
+			html, select {
+				font-size: 24px;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			html, select {
+				font-size: 14px;
+			}
+		}
+
+    </style>
+    <script>
+    	function onChange() {
+    		var chosenId = document.getElementById("gymselect").value;
+    		//alert("you chose " + chosenId);
+
+    		var row = document.getElementById("girdner");
+    		do {
+    			var thisId = row.id;
+    			//alert("this row has id " + thisId);
+    			if(thisId == chosenId || chosenId == "all") {
+    				row.style.display = "table-row";
+    			} else {
+    				row.style.display = "none";
+    			}
+    			row = row.nextElementSibling;
+    			if(null == row) break;
+    		} while(true);
+    	}
+    </script>
+  </head>
+  <body>
+    <h1>Sedona Pokémon Go Gyms</h1>
+    <p>This is a list of Pokémon Go gyms in and around Sedona, Arizona.
+      <br>
+    </p>
+    <p>For each gym, we list its name, general location, link to Google Maps, and address for your GPS nav system.
+      See also <a href="sedona-gyms.png">the big map</a>.
+    </p>
