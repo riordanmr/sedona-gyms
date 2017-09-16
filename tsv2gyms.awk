@@ -8,7 +8,7 @@
 
 BEGIN {
 	FS = "\t"
-	
+
 	print "<select id=\"gymselect\" onchange=\"onChange();\">"
 	print " <option value=\"all\">All</option>"
 }
@@ -38,9 +38,9 @@ END {
 		addr = aryAddr[igym]
 		notes = aryNotes[igym]
 		mapurl = aryMapUrl[igym]
-	
+
 		print "<tr id=\"" id "\">"
-		print "  <td><b>" name "</b><br/>" 
+		print "  <td><b>" name "</b><br/>"
 		print "  <table width=\"100%\" border=\"0\">"
 		print "    <tr> <td width=\"6%\"> </td>"
 		print "      <td>"
@@ -48,7 +48,8 @@ END {
 			 print locdesc "<br/>"
 		}
 		print "        <a href=\"" mapurl "\">Map</a>"
-		print " &nbsp; " addr  
+		link = "<a href=\"index.html?gym=" id "\">Link</a>"
+		print " &nbsp;" link "&nbsp; " addr
 		if(length(notes) > 0) {
 			 print "<br/>" notes
 		}
@@ -60,6 +61,7 @@ END {
 	}
 
     print "</table>"
+    print "<p><a href=\"javascript:reset();\">Reset</a></p>"
 	print "<p><cite>Mark Riordan &nbsp; Last updated 2017-09-16</cite></p>"
 	print "</body>"
 	print "</html>"

@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Sedona Pokémon Go Gyms</title>
+    <!-- Written by Mark Riordan  Sep 2017.  Available under MIT X11 license. -->
     <style>
       h1 {font-family: Arial; font-size: 1.2rem;}
       body {  font-family: Arial; font-size: 1rem; }
@@ -39,15 +40,12 @@
 
     </style>
     <script>
-    	function onChange() {
-    		var chosenId = document.getElementById("gymselect").value;
-    		//alert("you chose " + chosenId);
-
+    	function showGym(id) {
     		var row = document.getElementById("girdner");
     		do {
     			var thisId = row.id;
     			//alert("this row has id " + thisId);
-    			if(thisId == chosenId || chosenId == "all") {
+    			if(thisId == id || id == "all" || id == "") {
     				row.style.display = "table-row";
     			} else {
     				row.style.display = "none";
@@ -56,13 +54,36 @@
     			if(null == row) break;
     		} while(true);
     	}
+
+    	function onChange() {
+    		var chosenId = document.getElementById("gymselect").value;
+    		//alert("you chose " + chosenId);
+    		showGym(chosenId);
+    	}
+
+    	function getQueryStringValue(key) {
+  			return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+		}
+
+    	function onLoad() {
+    		var gym = getQueryStringValue("gym");
+    		if(gym=="") gym = "all";
+    		document.getElementById("gymselect").value = gym;
+    		showGym(gym);
+    	}
+
+    	function reset() {
+    		document.getElementById("gymselect").value = "all"
+    		showGym("all");
+    	}
     </script>
   </head>
-  <body>
+  <body onload="onLoad();">
     <h1>Sedona Pokémon Go Gyms</h1>
     <p>This is a list of Pokémon Go gyms in and around Sedona, Arizona.
       <br>
     </p>
-    <p>For each gym, we list its name, general location, link to Google Maps, and address for your GPS nav system.
+    <p>For each gym, we list its name, general location, link to Google Maps,
+      link to the gym on this site, and address for your GPS nav system.
       See also <a href="sedona-gyms.png">the big map</a>.
     </p>
