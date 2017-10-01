@@ -61,8 +61,8 @@ END {
 	}
 
     print "</table>"
-    print "<p><a href=\"javascript:reset();\">Reset</a></p>"
-	print "<p><cite>Mark Riordan &nbsp; Last updated 2017-09-16</cite></p>"
+    print "<p><a href=\"javascript:reset();\">Show All</a></p>"
+	print "<p><cite>Mark Riordan &nbsp; Last updated 2017-09-30</cite></p>"
 	print "</body>"
 	print "</html>"
 }

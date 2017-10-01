@@ -53,6 +53,15 @@
     			row = row.nextElementSibling;
     			if(null == row) break;
     		} while(true);
+
+    		// If showing only one gym, hide the instructions.
+    		// This is so the preview of the first few lines on the page (as shown in
+    		// Facebook Messenger, for instance) will show useful information.
+    		var displayStyle = "none";
+    		if("all"==id) {
+    		    displayStyle = "block";
+    		}
+    		document.getElementById("header").style.display = displayStyle;
     	}
 
     	function onChange() {
@@ -79,6 +88,7 @@
     </script>
   </head>
   <body onload="onLoad();">
+   <div id="header">
     <h1>Sedona Pokémon Go Gyms</h1>
     <p>This is a list of Pokémon Go gyms in and around Sedona, Arizona.
       <br>
@@ -87,3 +97,4 @@
       link to the gym on this site, and address for your GPS nav system.
       See also <a href="sedona-gyms.png">the big map</a>.
     </p>
+   </div>
